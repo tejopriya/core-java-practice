@@ -1,0 +1,116 @@
+import java.util.Scanner;
+
+public class atm {
+
+	double acbal=10000;
+	Scanner s=new Scanner(System.in);
+	public void validate() {
+		System.out.println("Enter pin");
+		int pin=s.nextInt();
+		if(pin==1234) {
+			viewOptions();
+		}
+		else {
+			System.out.println("Invalid pin");
+		}
+	}
+	public void viewOptions() {
+		System.out.println("1.deposit");
+		System.out.println("2.withdraw");
+		System.out.println("3.balEnquiry");
+		System.out.println("0.EXIT");
+		System.out.println("choose your option");
+		int options=s.nextInt();
+		switch(options) {
+		case 1:{
+			deposite();
+			confirm();
+			break;
+		}
+		case 2:{
+			withdraw();
+			confirm();
+			break;
+		}
+		case 3:{
+			balEnquiry();
+			confirm();
+			break;
+		}
+		case 0:{
+			System.out.println("Thank you,visit again");
+			break;
+		}
+		default:{
+			System.out.println("invalid");
+		}
+		}
+	}
+	public void deposite() {
+		System.out.println("enter deposit amount");
+		int amount=s.nextInt();
+		if(amount%100==0) {
+			if(amount<=50000) {
+				acbal=acbal+amount;
+			}
+			else {
+				System.out.println("Deposit limit is 50000 only");
+			}
+		}
+		else {
+			System.out.println("please enter valid amount");
+		}
+		System.out.println("Available balance:"+acbal);
+	}
+	public void withdraw() {
+		System.out.println("Enter withdraw amount");
+		int amount=s.nextInt();
+		if(amount%100==0) {
+			if(amount<=50000) {
+				acbal=acbal-amount;
+				no_Of_Notes(amount);
+			}
+			else {
+				System.out.println("transaction limit is 20000");
+			}
+		}
+		else {
+			System.out.println("Please enter multiples of 100");
+		}
+		System.out.println("available balance:"+acbal);
+	}
+	public void balEnquiry(){
+		System.out.println("available balance:"+acbal);
+	}
+	public void confirm() {
+		System.out.println("Enter 1.continue 0.EXIT");
+		int option=s.nextInt();
+		if(option==1) {
+			viewOptions();
+		}
+		else if(option==0){
+			System.out.println("Thank you,visit again");
+		}
+		else {
+			System.out.println("invalid option");
+		}
+	}
+	public void no_Of_Notes(int amount) {
+		int a=0,b=0,c=0;
+		if(amount>=500) {
+			a=amount/500;
+			amount=amount-(a*500);
+			System.out.println("500 notes are:"+a);
+		}
+		if(amount>=200) {
+			b=amount/200;
+			amount=amount-(b*200);
+			System.out.println("200 notes are:"+b);
+		}
+		if(amount>=100) {
+			c=amount/100;
+			amount=amount-(c*500);
+			System.out.println("100 notes are:"+c);
+		}
+	}
+}
