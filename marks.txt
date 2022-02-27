@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class example2 {
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		
+		System.out.print("Enter marks of three subjects");
+		int p=s.nextInt();
+		int e=s.nextInt();
+		int i=s.nextInt();		
+		if(p>=50 && e>=50 && i>=50) {
+			int score=((p*70)/100)+((e*20)/100)+((i*10)/100);
+			System.out.println(" score"+score);
+			if(score>90)
+			{
+				System.out.println("A grade");
+			}
+			if(score>=70 && score<90)
+			{
+				System.out.println("b grade");
+			}
+			if(score>=50 && score<70)
+			{
+				System.out.println("c grade");
+			}
+		}
+		else {
+			if(p<50) {
+				System.out.println("Failed in Project:"+p);
+			}
+			if(e<50) {
+				System.out.println("Failed in External:"+e);
+			}
+			if(i<50) {
+				System.out.println("Failed in internal:"+i);
+			}
+		}
+	}
+}
+
+
